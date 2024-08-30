@@ -700,7 +700,7 @@ var FORM_DEFAULT = PREFILLED ? PREFILLED_FORM_DEFAULT : {
   electricity: 'landlord',
   all: 'landlord'
 };
-var PAYMENT_STANDARD_URL = '/warehouse/public_payment_standards/payment_standard_data.json';
+var PAYMENT_STANDARD_URL = 'payment_standard_data.json';
 var PROGRAMS = {
   section_8: {
     label: 'Section 8',
