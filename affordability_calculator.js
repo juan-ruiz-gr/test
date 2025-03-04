@@ -304,7 +304,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
         className: "col"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
         className: "h5 font-weight-bold"
-      }, "Voucher and Income Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Details about the recipient and voucher. Contact the Regional Administering Agency (RAA) who issued the voucher for the your Annual Adjusted Income."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      }, "Voucher and Income Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Contact the Housing Agency who issued the voucher for your Annual Adjusted Income."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "col-lg-4 col-12"
@@ -415,7 +415,8 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
         className: "text-primary",
         role: "button",
-        onClick: toggleExplanation
+        onClick: toggleExplanation,
+        id: "showExplanation"
       }, "Show explanation"));
     }
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -442,7 +443,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: "font-weight-bold"
     }, "Tenant Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultDifference"
+      id: "outputTenantShare"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estTenantShare))))));
     if (watch('useMaxIncomePercent')) {
       tenantSharetable = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", {
@@ -450,18 +451,16 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: ""
       }, "Tenant 30% of monthly income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-        className: "w-25 text-right",
-        id: "resultPaymentStandard"
+        className: "w-25 text-right"
       }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(Math.round(0.3 * result.monthlyIncome)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "border-bottom border-dark"
       }, "Additional 10% of monthly income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-        className: "border-bottom border-dark w-25 text-right",
-        id: "resultRent"
+        className: "border-bottom border-dark w-25 text-right"
       }, "+", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(Math.round(0.1 * result.monthlyIncome)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "font-weight-bold"
       }, "Tenant Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "font-weight-bold w-25 text-right",
-        id: "resultDifference"
+        id: "outputTenantShare"
       }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estTenantShare))))));
     }
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
@@ -486,7 +485,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: "font-weight-bold"
     }, "Maximum rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultDifference"
+      id: "outputMaximumRent"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.landlordPaysUtilitiesMaxRent))))));
     if (watch('useMaxIncomePercent')) {
       exploreVoucherTable = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", {
@@ -494,18 +493,16 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: ""
       }, "Maximum rent at 30% income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-        className: "w-25 text-right",
-        id: "resultDifference"
+        className: "w-25 text-right"
       }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.landlordPaysUtilitiesMaxRent - Math.round(0.1 * result.monthlyIncome)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "border-bottom border-dark"
       }, "Additional 10% of monthly income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-        className: "border-bottom border-dark w-25 text-right",
-        id: "resultRent"
+        className: "border-bottom border-dark w-25 text-right"
       }, "+", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(Math.round(0.1 * result.monthlyIncome)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "font-weight-bold"
       }, "Maximum rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
         className: "font-weight-bold w-25 text-right",
-        id: "resultDifference"
+        id: "outputMaximumRent"
       }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.landlordPaysUtilitiesMaxRent))))));
     }
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
@@ -517,18 +514,17 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: ""
     }, "Maximum rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-      className: "w-25 text-right",
-      id: "resultDifference"
+      className: "w-25 text-right"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.landlordPaysUtilitiesMaxRent))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark"
     }, "Maximum estimated utilities"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark w-25 text-right",
-      id: "resultRent"
+      id: "outputUtilities"
     }, "-", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estimatedHighestUtilityDeduction))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold"
     }, "Maximum rent with tenant paying all utilities"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultDifference"
+      id: "outputMaximumRentPayingUtilities"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.tenantPaysUtilitiesMaxRent))))));
   };
   var explanationHtml = function explanationHtml() {
@@ -538,7 +534,8 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
         className: "text-primary",
         role: "button",
-        onClick: toggleExplanation
+        onClick: toggleExplanation,
+        id: "showExplanation"
       }, "Show explanation"));
     }
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -563,17 +560,17 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: ""
     }, "Rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "w-25 text-right",
-      id: "result30PercentMonthlyIncome"
+      id: "outputRent"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.rent))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark"
     }, "Estimated utilities"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark w-25 text-right",
-      id: "result30PercentMonthlyIncome"
+      id: "outputUtilities"
     }, "+", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.utilities))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold"
     }, "Gross rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultEstTenantShare"
+      id: "outputGrossRent"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.rentPlusUtilities))))));
   };
   var voucherPaymentHtml = function voucherPaymentHtml() {
@@ -601,17 +598,17 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: ""
     }, firstRowLabel), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "w-25 text-right",
-      id: "resultRent"
+      id: "outputFirstRow"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(firstRowValue))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark"
     }, secondRowLabel), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark text-right",
-      id: "resultRent"
+      id: "outputSecondRow"
     }, "-", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(secondRowValue))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold"
     }, "Voucher Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold text-right",
-      id: "resultDifference"
+      id: "outputVoucherPayment"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.subsidy))))));
   };
   var tenantShareWithoutVoucherHtml = function tenantShareWithoutVoucherHtml() {
@@ -625,13 +622,12 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark"
     }, "Tenant 30% of monthly income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-      className: "border-bottom border-dark w-25 text-right",
-      id: "resultRent"
+      className: "border-bottom border-dark w-25 text-right"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(Math.round(0.3 * result.monthlyIncome)), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold"
     }, "Tenant Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultDifference"
+      id: "outputTenantShare"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estTenantShare))))));
   };
   var tenantShareTableHtml = function tenantShareTableHtml() {
@@ -646,7 +642,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: "font-weight-bold ".concat(fontColorClass)
     }, "Tenant share as % of monthly income"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 ".concat(fontColorClass, " text-right"),
-      id: "resultPaymentStandard"
+      id: "outputTenantSharePercentage"
     }, Math.round(100 * result.percentageOfIncome), "%"))));
     if (result.affordable == 'minimumContributionExpected') {
       percentMessage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null);
@@ -658,18 +654,16 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: ""
     }, "Gross Rent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-      className: "w-25 text-right",
-      id: "resultPaymentStandard"
+      className: "w-25 text-right"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.rentPlusUtilities))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "border-bottom border-dark"
     }, "Voucher Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
-      className: "border-bottom border-dark w-25 text-right",
-      id: "resultRent"
+      className: "border-bottom border-dark w-25 text-right"
     }, "-", (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.subsidy), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold"
     }, "Tenant Share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
       className: "font-weight-bold w-25 text-right",
-      id: "resultDifference"
+      id: "outputTenantShare"
     }, (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estTenantShare))))), percentMessage);
   };
   var resultHeader = function resultHeader(title) {
@@ -697,7 +691,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
   var estimatedShareHtml = function estimatedShareHtml() {
     var limit = (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getLimitFor)(result);
     var minimum = _Hooks_AffordabilityCalculator_consts__WEBPACK_IMPORTED_MODULE_8__.PROGRAMS[result.voucherType].minimumContribution;
-    if (minimum > 0 && limit.estimatedRentMessage && (result.affordable === 'affordableWithoutVoucher' || result.affordable === 'affordableWithVoucher' || result.affordable === 'maybeAffordableWithVoucher' || result.affordable == "minimumContributionExpected")) {
+    if (limit.estimatedRentMessage && (result.affordable === 'affordableWithoutVoucher' || result.affordable === 'affordableWithVoucher' || result.affordable === 'maybeAffordableWithVoucher' || result.affordable == "minimumContributionExpected")) {
       var message = limit.estimatedRentMessage.replace('{tenantShare}', (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(result.estTenantShare)).replace('{minRent}', (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.currencyFormat)(minimum)).replace('{voucherType}', String((0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.voucherTypeLabel)(result.voucherType)));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "row mt-4 mb-2"
@@ -705,7 +699,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
         className: "col-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
         className: "h4 font-weight-bold text-dark",
-        id: "estimated_rent_message"
+        id: "estimatedRentMessage"
       }, message)));
     }
   };
@@ -751,7 +745,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: "col-12"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
       className: "text-dark"
-    }, "Calculations are estimates only and subject to the final approval by housing agency staff. All rents must be found reasonable compared to other market rents in the area. This rent would have to be approved as reasonable."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "Calculations are estimates only and subject to the final approval by housing agency staff. All rents must be found reasonable compared to other market rents in the area."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "pb-3"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
       className: "text-primary",
@@ -793,7 +787,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       className: "col-12"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
       className: "text-dark"
-    }, "Calculations are estimates only and subject to the final approval by housing agency staff. All rents must be found reasonable compared to other market rents in the area. This rent would have to be approved as reasonable."))), buttonsHtml()));
+    }, "Calculations are estimates only and subject to the final approval by housing agency staff. All rents must be found reasonable compared to other market rents in the area."))), buttonsHtml()));
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     "aria-label": "Affordability Calculator"
@@ -1133,7 +1127,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SIZES: function() { return /* binding */ SIZES; }
 /* harmony export */ });
 // if true, pre-fill form with dummy data for development purposes.
-var PREFILLED = true;
+var PREFILLED = false;
 var PREFILLED_FORM_DEFAULT = {
   mode: 'full',
   annualIncome: 1197600,
