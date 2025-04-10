@@ -108,14 +108,14 @@
     sentryError('Received NaN payment standard', info);
   }
   
-  $(function() {
+  $(document).ready(function() {
     const $form = $("form[id='search_form']");
     const $searchLocation = $('#search_location');
     const $searchSize = $('#search_size');
     const $searchProgram = $('#search_program');
     const $results = $("#results");
     const $submit = $('#search_submit');
-    const json_suffix = "20250408131905";
+    const json_suffix = "";
   
     let parsedToday = new Date().setUTCHours(0, 0, 0, 0);
     let paymentStandard = {};
@@ -196,6 +196,35 @@
       }
     }
   
+    function togglePageReload() {
+      if( !localStorage.getItem('paymentStandardsReLoaded') ) {
+        // Data is missing, try a page reload for the first time
+        localStorage['paymentStandardsReLoaded'] = true;
+        $results.append('<p>Error loading data. Reloading the page.</p>');
+        window.location.reload();
+      }
+      else {
+        // Data is still missing after trying a page reload
+        // Log the sentryError
+        localStorage.removeItem('paymentStandardsReLoaded');
+        $results.append('<p>Error loading data.</p>');
+        sentryError('Error loading data.');
+      }
+    }
+  
+    function handleMissingData() {
+      if( window.localStorage ) {
+        togglePageReload();
+      }
+      else {
+        // Data is missing but user does not have localStorage enabled
+        // Ask the user to reload the page
+        // Log the sentryError
+        $results.append('<p>Error loading data. Please try re-loading the page.</p>');
+        sentryError('Error loading data. Trying manual re-load.');
+      }
+    }
+  
     function handleSearch() {
       let zipCodes = [];
       let location = $searchLocation.val().trim().toUpperCase();
@@ -253,8 +282,7 @@
       ].some((obj) => Object.keys(Object(obj)).length == 0);
   
       if(missingData) {
-        $results.append('<p>Error loading data.</p>');
-        sentryError('Error loading data');
+        handleMissingData();
       } else {
         $submit.prop('disabled', false);
       }
