@@ -97,25 +97,22 @@
 <div class='flex-column' id='results'></div>
 </div>
 <script>
-  function sentryError(message, info) {
+  function logNaNToSentry(info) {
     try {
-      Sentry.captureMessage(message, { extra: info, level: Sentry.Severity.Error });
+      Sentry.captureMessage('Received NaN payment standard', { extra: info, level: Sentry.Severity.Error })
     } catch(err) {
-      console.error(err);
+      console.error(err)
     }
   }
-  function logNaNToSentry(info) {
-    sentryError('Received NaN payment standard', info);
-  }
   
-  $(document).ready(function() {
+  $(function() {
     const $form = $("form[id='search_form']");
     const $searchLocation = $('#search_location');
     const $searchSize = $('#search_size');
     const $searchProgram = $('#search_program');
     const $results = $("#results");
     const $submit = $('#search_submit');
-    const json_suffix = "";
+    const json_suffix = "20250306194155";
   
     let parsedToday = new Date().setUTCHours(0, 0, 0, 0);
     let paymentStandard = {};
@@ -190,38 +187,9 @@
       });
       if (dateFromKey && dateToKey) {
         activePaymentStandard = ps[dateFromKey][dateToKey];
+        console.log('active set')
       } else {
-        activePaymentStandard = undefined;
-        sentryError(`undefined payment standard for program: '${program}'`);
-      }
-    }
-  
-    function togglePageReload() {
-      if( !localStorage.getItem('paymentStandardsReLoaded') ) {
-        // Data is missing, try a page reload for the first time
-        localStorage['paymentStandardsReLoaded'] = true;
-        $results.append('<p>Error loading data. Reloading the page.</p>');
-        window.location.reload();
-      }
-      else {
-        // Data is still missing after trying a page reload
-        // Log the sentryError
-        localStorage.removeItem('paymentStandardsReLoaded');
-        $results.append('<p>Error loading data.</p>');
-        sentryError('Error loading data.');
-      }
-    }
-  
-    function handleMissingData() {
-      if( window.localStorage ) {
-        togglePageReload();
-      }
-      else {
-        // Data is missing but user does not have localStorage enabled
-        // Ask the user to reload the page
-        // Log the sentryError
-        $results.append('<p>Error loading data. Please try re-loading the page.</p>');
-        sentryError('Error loading data. Trying manual re-load.');
+        console.log('active NOT set')
       }
     }
   
@@ -255,6 +223,7 @@
         zipCodes = [];
       }
       // zip code validation.
+      console.log(activePaymentStandard)
       zipCodes = zipCodes
         .map((zipCode) => {
           if(activePaymentStandard[zipCode] != undefined) {
@@ -282,7 +251,7 @@
       ].some((obj) => Object.keys(Object(obj)).length == 0);
   
       if(missingData) {
-        handleMissingData();
+        $results.append('<p>Error loading data.</p>');
       } else {
         $submit.prop('disabled', false);
       }
@@ -300,7 +269,6 @@
         } catch (error) {
           $results.empty();
           $results.append('<p>Unexpected error.</p>');
-          sentryError('Unexpected error', error);
           console.error(error);
         }
       }
