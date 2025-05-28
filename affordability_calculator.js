@@ -41,18 +41,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Hooks_useJsonData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Hooks/useJsonData */ "./app/javascript/src/Hooks/useJsonData.ts");
 /* harmony import */ var _Hooks_AffordabilityCalculator_consts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Hooks/AffordabilityCalculator/consts */ "./app/javascript/src/Hooks/AffordabilityCalculator/consts.ts");
 /* harmony import */ var _Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Hooks/AffordabilityCalculator/utils */ "./app/javascript/src/Hooks/AffordabilityCalculator/utils.ts");
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -86,12 +86,15 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
     _useState4 = _slicedToArray(_useState3, 2),
     resultMax = _useState4[0],
     setResultMax = _useState4[1];
-  var validateZipCode = function validateZipCode(value, program) {
-    var activePaymentStandard = (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getActivePaymentStandard)(jsonData || {}, program);
+  var validateZipCode = function validateZipCode(value) {
+    var activePaymentStandard = (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getActivePaymentStandard)(jsonData || {});
     return activePaymentStandard != undefined && activePaymentStandard[value] != undefined;
   };
   var onSubmit = function onSubmit(data) {
-    var activePaymentStandard = (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getActivePaymentStandard)(jsonData || {}, data.voucherType);
+    if (data.voucherType == 'section_8') {
+      data.hw = data.heat == "tenant" || data.electric == "tenant" ? "tenant" : "landlord";
+    }
+    var activePaymentStandard = (0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getActivePaymentStandard)(jsonData || {});
     if (activePaymentStandard) {
       setResult((0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getResultForInput)(data, activePaymentStandard));
       setResultMax((0,_Hooks_AffordabilityCalculator_utils__WEBPACK_IMPORTED_MODULE_9__.getResultForInput)(_objectSpread(_objectSpread({}, data), {}, {
@@ -137,7 +140,6 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "progress-bar",
-      "aria-label": "Share Percent",
       style: {
         width: "".concat(sharePercent, "%"),
         background: '#333333',
@@ -148,7 +150,6 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       role: "progressbar"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "progress-bar",
-      "aria-label": "Voucher Percent",
       style: {
         width: "".concat(voucherPercent, "%"),
         background: '#E8EEF4',
@@ -232,7 +233,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       required: 'Must be provided',
       validate: {
         valid: function valid(v) {
-          return validateZipCode(v, watch('voucherType')) || 'ZIP code not found';
+          return validateZipCode(v) || 'ZIP code not found';
         }
       }
     }), {
@@ -258,7 +259,7 @@ var AffordabilityCalculatorComponent = function AffordabilityCalculatorComponent
       required: 'Must be provided',
       validate: {
         valid: function valid(v) {
-          return validateZipCode(v, watch('voucherType')) || 'ZIP code not found';
+          return validateZipCode(v) || 'ZIP code not found';
         }
       }
     }), {
@@ -856,14 +857,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //} & Omit<ReactCurrencyInputProps, 'onChange'>; // Omit 'onChange' as it uses 'onValueChange'
 // CurrencyTextInput component using forwardRef
 var CurrencyTextInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_ref, ref) {
-  var _id;
   var label = _ref.label,
     required = _ref.required,
     id = _ref.id,
     error = _ref.error,
     setValue = _ref.setValue,
     props = _objectWithoutProperties(_ref, _excluded);
-  id = (_id = id) !== null && _id !== void 0 ? _id : (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   var handleOnValueChange = function handleOnValueChange(_value, name, values) {
     setValue(name, values === null || values === void 0 ? void 0 : values["float"]);
   };
@@ -919,7 +918,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var RadioSelectInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_ref, ref) {
-  var _id;
   var error = _ref.error,
     hint = _ref.hint,
     label = _ref.label,
@@ -930,7 +928,6 @@ var RadioSelectInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default()
     className = _ref.className,
     optionClassName = _ref.optionClassName,
     onChange = _ref.onChange;
-  (_id = id) !== null && _id !== void 0 ? _id : id = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("fieldset", {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])('form-group', 'mb-0', 'w-100', className),
     id: id
@@ -981,14 +978,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 var SelectInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_ref, ref) {
-  var _id;
   var label = _ref.label,
     required = _ref.required,
     id = _ref.id,
     error = _ref.error,
     options = _ref.options,
     props = _objectWithoutProperties(_ref, _excluded);
-  (_id = id) !== null && _id !== void 0 ? _id : id = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])('form-group', 'string', 'form-group-valid', id, {
       required: required
@@ -1042,11 +1037,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 var Switch = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_ref, ref) {
-  var _id;
   var id = _ref.id,
     label = _ref.label,
     props = _objectWithoutProperties(_ref, _excluded);
-  (_id = id) !== null && _id !== void 0 ? _id : id = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("custom-control", "custom-switch", props.className)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", _extends({}, props, {
@@ -1080,13 +1073,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 var TextInput = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_ref, ref) {
-  var _id;
   var label = _ref.label,
     required = _ref.required,
     id = _ref.id,
     error = _ref.error,
     props = _objectWithoutProperties(_ref, _excluded);
-  (_id = id) !== null && _id !== void 0 ? _id : id = (0,react__WEBPACK_IMPORTED_MODULE_0__.useId)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])('form-group', 'string', 'form-group-valid', id, {
       required: required
@@ -1148,6 +1139,8 @@ var PREFILLED_FORM_DEFAULT = {
   water: 'tenant',
   heat: 'tenant',
   electric: 'tenant',
+  cooking: 'tenant',
+  hw: 'tenant',
   electricity: 'tenant',
   all: 'tenant',
   useMaxIncomePercent: false,
@@ -1164,6 +1157,8 @@ var FORM_DEFAULT = PREFILLED ? PREFILLED_FORM_DEFAULT : {
   water: 'tenant',
   heat: 'tenant',
   electric: 'tenant',
+  cooking: 'tenant',
+  hw: 'tenant',
   electricity: 'tenant',
   all: 'tenant',
   useMaxIncomePercent: false,
@@ -1207,6 +1202,38 @@ var PROGRAMS = {
           six_bedroom: 38,
           seven_bedroom: 39,
           eight_bedroom: 39
+        }
+      },
+      cooking: {
+        label: 'Cooking',
+        visible: true,
+        values: {
+          sro: 11,
+          efficiency: 11,
+          one_bedroom: 16,
+          two_bedroom: 20,
+          three_bedroom: 25,
+          four_bedroom: 31,
+          five_bedroom: 36,
+          six_bedroom: 36,
+          seven_bedroom: 36,
+          eight_bedroom: 36
+        }
+      },
+      hw: {
+        label: 'Hot Water',
+        visible: false,
+        values: {
+          sro: 35,
+          efficiency: 35,
+          one_bedroom: 39,
+          two_bedroom: 62,
+          three_bedroom: 76,
+          four_bedroom: 97,
+          five_bedroom: 111,
+          six_bedroom: 111,
+          seven_bedroom: 111,
+          eight_bedroom: 111
         }
       }
     }
@@ -1417,34 +1444,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   voucherTypeLabel: function() { return /* binding */ voucherTypeLabel; },
 /* harmony export */   voucherTypeOptions: function() { return /* binding */ voucherTypeOptions; }
 /* harmony export */ });
-/* harmony import */ var lodash_min__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/min */ "../node_modules/lodash/min.js");
-/* harmony import */ var lodash_min__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_min__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash_max__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/max */ "../node_modules/lodash/max.js");
-/* harmony import */ var lodash_max__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_max__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "../node_modules/date-fns/startOfDay.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "../node_modules/date-fns/parseISO.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "../node_modules/date-fns/endOfDay.js");
-/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./consts */ "./app/javascript/src/Hooks/AffordabilityCalculator/consts.ts");
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "../node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consts */ "./app/javascript/src/Hooks/AffordabilityCalculator/consts.ts");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var voucherTypeLabel = function voucherTypeLabel(name) {
-  return _consts__WEBPACK_IMPORTED_MODULE_2__.PROGRAMS[name]['label'];
+  return _consts__WEBPACK_IMPORTED_MODULE_1__.PROGRAMS[name]['label'];
 };
 var voucherTypeOptions = function voucherTypeOptions() {
-  var options = Object.entries(_consts__WEBPACK_IMPORTED_MODULE_2__.PROGRAMS).map(function (_ref) {
+  var options = Object.entries(_consts__WEBPACK_IMPORTED_MODULE_1__.PROGRAMS).map(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
       name = _ref2[0],
       program = _ref2[1];
@@ -1459,7 +1479,7 @@ var voucherTypeOptions = function voucherTypeOptions() {
   }].concat(options);
 };
 var bedroomOptions = function bedroomOptions() {
-  var options = Object.entries(_consts__WEBPACK_IMPORTED_MODULE_2__.SIZES).map(function (_ref3) {
+  var options = Object.entries(_consts__WEBPACK_IMPORTED_MODULE_1__.SIZES).map(function (_ref3) {
     var _ref4 = _slicedToArray(_ref3, 2),
       name = _ref4[0],
       size = _ref4[1];
@@ -1474,7 +1494,7 @@ var bedroomOptions = function bedroomOptions() {
   }].concat(options);
 };
 var getMinUnitSize = function getMinUnitSize(unitSize, voucherSize) {
-  if (unitSize && _consts__WEBPACK_IMPORTED_MODULE_2__.SIZES[unitSize]['weight'] < _consts__WEBPACK_IMPORTED_MODULE_2__.SIZES[voucherSize]['weight']) {
+  if (unitSize && _consts__WEBPACK_IMPORTED_MODULE_1__.SIZES[unitSize]['weight'] < _consts__WEBPACK_IMPORTED_MODULE_1__.SIZES[voucherSize]['weight']) {
     return unitSize;
   } else {
     return voucherSize;
@@ -1483,44 +1503,37 @@ var getMinUnitSize = function getMinUnitSize(unitSize, voucherSize) {
 var getLimitFor = function getLimitFor(result) {
   var limit;
   if (!result.type) {
-    limit = _consts__WEBPACK_IMPORTED_MODULE_2__.LIMITS['full']['notAffordable'];
+    limit = _consts__WEBPACK_IMPORTED_MODULE_1__.LIMITS['full']['notAffordable'];
   } else {
-    limit = _consts__WEBPACK_IMPORTED_MODULE_2__.LIMITS[result.type][result.affordable];
+    limit = _consts__WEBPACK_IMPORTED_MODULE_1__.LIMITS[result.type][result.affordable];
   }
   return limit;
 };
 var currencyFormat = function currencyFormat(value) {
   return "$".concat(new Intl.NumberFormat('en-US').format(Math.round(value)));
 };
-var getActivePaymentStandard = function getActivePaymentStandard(jsonData, program) {
-  var today = new Date();
+var getActivePaymentStandard = function getActivePaymentStandard(jsonData) {
+  var today = new Date().toISOString();
   var paymentStandard = jsonData || {};
-  if (!Object.keys(paymentStandard).includes(program)) {
-    return;
-  }
-  for (var _i = 0, _Object$keys = Object.keys(paymentStandard[program]); _i < _Object$keys.length; _i++) {
-    var dateFrom = _Object$keys[_i];
-    for (var _i2 = 0, _Object$keys2 = Object.keys(paymentStandard[program][dateFrom]); _i2 < _Object$keys2.length; _i2++) {
-      var dateTo = _Object$keys2[_i2];
-      if ((0,date_fns__WEBPACK_IMPORTED_MODULE_3__.startOfDay)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__.parseISO)(dateFrom)) <= today && today <= (0,date_fns__WEBPACK_IMPORTED_MODULE_5__.endOfDay)((0,date_fns__WEBPACK_IMPORTED_MODULE_4__.parseISO)(dateTo))) {
-        return paymentStandard[program][dateFrom][dateTo];
+  for (var _i2 = 0, _Object$keys = Object.keys(paymentStandard); _i2 < _Object$keys.length; _i2++) {
+    var dateFrom = _Object$keys[_i2];
+    for (var _i3 = 0, _Object$keys2 = Object.keys(paymentStandard[dateFrom]); _i3 < _Object$keys2.length; _i3++) {
+      var dateTo = _Object$keys2[_i3];
+      if (dateFrom <= today && today <= dateTo) {
+        return paymentStandard[dateFrom][dateTo];
       }
     }
   }
 };
-
-/*
- * Affordability Calculator main logic
-*/
 var getResultForInput = function getResultForInput(data, activePaymentStandard) {
   var unitSize = data.mode == 'full' ? getMinUnitSize(data.unitSize, data.voucherSize) : data.voucherSize;
   var voucherType = data.voucherType;
   var utilitiesUnitSize = voucherType === 'mrvp' ? data.unitSize || data.voucherSize : unitSize;
-  var program = _consts__WEBPACK_IMPORTED_MODULE_2__.PROGRAMS[voucherType];
+  var program = _consts__WEBPACK_IMPORTED_MODULE_1__.PROGRAMS[voucherType];
   var _Object$keys3 = Object.keys(activePaymentStandard[data.zipCode]),
     _Object$keys4 = _slicedToArray(_Object$keys3, 1),
     town = _Object$keys4[0];
-  var paymentStandardBySize = activePaymentStandard[data.zipCode][town];
+  var paymentStandardBySize = activePaymentStandard[data.zipCode][town][data.voucherType];
   var paymentStandard = Number(paymentStandardBySize[unitSize]);
   var monthlyIncome = Math.abs(Number(data.annualIncome) / 12);
   var utilities = program['utilities'];
@@ -1623,9 +1636,9 @@ var useFullLogic = function useFullLogic(FullParams) {
     minimumContribution = _FullParams$minimumCo === void 0 ? 0 : _FullParams$minimumCo;
   var monthlyIncome = Math.round(agi / 12);
   var totalRentalCost = rent + utilityCost;
-  var householdContribution = lodash_min__WEBPACK_IMPORTED_MODULE_0___default()([lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([minimumContribution, Math.round(monthlyIncome * expectedContribution)]), totalRentalCost]);
-  var voucherPayment = lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([0, lodash_min__WEBPACK_IMPORTED_MODULE_0___default()([rent, lodash_min__WEBPACK_IMPORTED_MODULE_0___default()([paymentStandard, totalRentalCost]) - householdContribution])]);
-  var utilityReimbursement = lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([0, lodash_min__WEBPACK_IMPORTED_MODULE_0___default()([paymentStandard, totalRentalCost]) - householdContribution - voucherPayment]);
+  var householdContribution = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.min)([(0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([minimumContribution, Math.round(monthlyIncome * expectedContribution)]), totalRentalCost]);
+  var voucherPayment = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([0, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.min)([rent, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.min)([paymentStandard, totalRentalCost]) - householdContribution])]);
+  var utilityReimbursement = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([0, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.min)([paymentStandard, totalRentalCost]) - householdContribution - voucherPayment]);
   var tenantShare = totalRentalCost - voucherPayment - utilityReimbursement;
   var subsidy = voucherPayment + utilityReimbursement;
   var tenantSharePercent = (totalRentalCost - (voucherPayment + utilityReimbursement)) / monthlyIncome;
@@ -1661,8 +1674,8 @@ var useExploreLogic = function useExploreLogic(ExploreParams) {
     _ExploreParams$minimu = ExploreParams.minimumContribution,
     minimumContribution = _ExploreParams$minimu === void 0 ? 0 : _ExploreParams$minimu;
   var monthlyIncome = Math.round(agi / 12);
-  var householdContribution = lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([minimumContribution, Math.round(monthlyIncome * allowedContribution)]);
-  var maxVoucherPayment = lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([0, paymentStandard - lodash_max__WEBPACK_IMPORTED_MODULE_1___default()([minimumContribution, Math.round(monthlyIncome * (expectedContribution - 0.005))])]);
+  var householdContribution = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([minimumContribution, Math.round(monthlyIncome * allowedContribution)]);
+  var maxVoucherPayment = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([0, paymentStandard - (0,lodash__WEBPACK_IMPORTED_MODULE_0__.max)([minimumContribution, Math.round(monthlyIncome * (expectedContribution - 0.005))])]);
   var maxRent = householdContribution + maxVoucherPayment - utilityCost;
   var maxTenantShare = maxRent - maxVoucherPayment + utilityCost;
   var subsidy = maxVoucherPayment;
@@ -1741,8 +1754,8 @@ var useJsonData = function useJsonData(jsonFilename) {
 },
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, ["vendors-node_modules_lodash_max_js-node_modules_lodash_min_js-node_modules_react-currency-inp-e05c93"], function() { return __webpack_exec__("./app/javascript/packs/affordability_calculator.js"); });
+/******/ __webpack_require__.O(0, ["vendors-node_modules_lodash_lodash_js-node_modules_react-currency-input-field_dist_index_esm_-0465cd"], function() { return __webpack_exec__("./app/javascript/packs/affordability_calculator.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=affordability_calculator-6336b0a99e654ead6e9d.js.map
+//# sourceMappingURL=affordability_calculator.js.map
