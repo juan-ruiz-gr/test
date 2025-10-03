@@ -5,27 +5,408 @@
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 <title>
-Affordability Calculator
 
 </title>
 <link href='//fonts.googleapis.com' rel='preconnect'>
 <link crossorigin='true' href='//fonts.gstatic.com' rel='preconnect'>
 <link href='//fonts.googleapis.com/css2?family=Noto+Sans&amp;family=Oswald:wght@500&amp;display=swap' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/packs/css/application.css" media="all" data-turbolinks-track="reload" />
-<script src="/packs/js/vendors-node_modules_lodash_max_js-node_modules_lodash_min_js-node_modules_react-currency-inp-e05c93.js" data-turbolinks-track="reload" defer="defer"></script>
-<script src="/packs/js/affordability_calculator.js" data-turbolinks-track="reload" defer="defer"></script>
-
-
-
-
+<link crossorigin='anonymous' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css' integrity='sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr' rel='stylesheet'>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js'></script>
 </head>
-<body>
-<main>
-<div id='affordability_calculator_root'></div>
-
+<style>
+  h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  form .d-flex.flex-row {
+    max-width: 100%;
+  }
+  body {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+  }
+  .btn {
+    border-radius: 0;
+    box-shadow: 0 0.25rem 0.5rem rgba(1, 1, 1, 0.25);
+    letter-spacing: 0.1em;
+    transition: all 0.4s ease;
+    margin: 0.25em;
+  }
+  .btn-block {
+      display: block;
+      width: 100%;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #14558F;
+    border-color: #14558F;
+  }
+  .btn-primary:hover {
+    background-color: #14558F;
+  }
+  .btn-primary:focus {
+    background-color: #14558F;
+  }
+  form .error {
+    color: #CD0D0D;
+  }
+  .background-info {
+    background: #f7f7f7;
+  }
+</style>
+<body class='d-flex flex-column min-vh-100'>
+<header class='flex-shrink-0'></header>
+<div class='container-fluid flex-grow-1 gx-0'>
+<div class='row flex-nowrap'>
+<main class='mt-3 flex-grow-1 overflow-auto' id='j-main' tabindex='-1'>
+<form id="search_form" novalidate="novalidate" class="simple_form search" action="#" accept-charset="UTF-8" method="get"><div class='d-grid d-flex flex-row flex-wrap'>
+<div class='col-md-3 col-sm-12 col-12 px-1'>
+<div class='form-group'>
+<div class="mb-3 select optional search_program"><label class="form-label select optional" for="search_program">Program</label><select class="form-select select optional form-control" name="search[program]" id="search_program"><option selected="selected" value="section_8">Section 8</option>
+<option value="mrvp">MRVP</option>
+<option value="ahvp">AHVP</option></select></div>
+</div>
+</div>
+<div class='col-md-3 col-sm-12 col-12 px-1'>
+<div class='form-group'>
+<div class="mb-3 string optional search_location"><label class="form-label string optional" for="search_location">Zip Code / Town</label><input class="form-control string optional" value="boston" type="text" name="search[location]" id="search_location" /></div>
+</div>
+</div>
+<div class='col-md-3 col-sm-12 col-12 px-1'>
+<div class='form-group'>
+<div class="mb-3 select optional search_size"><label class="form-label select optional" for="search_size">Bedrooms</label><select class="form-select select optional form-control" name="search[size]" id="search_size"><option value="" label=" "></option>
+<option selected="selected" value="sro">Single Room Occupancy</option>
+<option value="efficiency">Studio</option>
+<option value="one_bedroom">1 Bedroom</option>
+<option value="two_bedroom">2 Bedroom</option>
+<option value="three_bedroom">3 Bedroom</option>
+<option value="four_bedroom">4 Bedroom</option>
+<option value="five_bedroom">5 Bedroom</option>
+<option value="six_bedroom">6 Bedroom</option>
+<option value="seven_bedroom">7 Bedroom</option>
+<option value="eight_bedroom">8 Bedroom</option></select></div>
+</div>
+</div>
+<div class='col-md-2 col-sm-12 col-12 px-0'>
+<div class='form-group'>
+<input type="submit" name="commit" value="Submit" class="btn btn-lg btn-primary btn-lg mt-4 w-100 mx-0" id="search_submit" disabled="disabled" data-disable-with="Submit" />
+</div>
+</div>
+</div>
+</form><div class='mt-4 col-md-11 col-sm-12 col-12 px-1 alert background-info d-none' id='upcoming-ps-alert' role='alert'>
+<div class='px-3'>
+<b>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewbox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+</svg>
+Updates to Payment Standards
+</b>
+<div class='mt-2 mb-0'>
+New payment standards come into effect
+<span id='upcoming-ps-alert-date'></span>
+</div>
+</div>
+</div>
+<div class='d-flex'>
+<div class='mx-1 mt-2 flex-column' id='results'></div>
+</div>
+<script>
+  function sentryError(message, info) {
+    try {
+      Sentry.captureMessage(message, { extra: info, level: Sentry.Severity.Error });
+    } catch(err) {
+      console.error(err);
+    }
+  }
+  function logNaNToSentry(info) {
+    sentryError('Received NaN payment standard', info);
+  }
+  
+  $(document).ready(function() {
+    const programLabels = {"section_8":"Section 8","mrvp":"MRVP","ahvp":"AHVP"};
+    const bedroomLabels = {"sro":"Single Room Occupancy","efficiency":"Studio","one_bedroom":"1 Bedroom","two_bedroom":"2 Bedroom","three_bedroom":"3 Bedroom","four_bedroom":"4 Bedroom","five_bedroom":"5 Bedroom","six_bedroom":"6 Bedroom","seven_bedroom":"7 Bedroom","eight_bedroom":"8 Bedroom"};
+    const $form = $("form[id='search_form']");
+    const $searchLocation = $('#search_location');
+    const $searchSize = $('#search_size');
+    const $searchProgram = $('#search_program');
+    const $results = $("#results");
+    const $submit = $('#search_submit');
+    const $upcomingPsAlert = $("#upcoming-ps-alert");
+    const $upcomingPsAlertDate = $("#upcoming-ps-alert-date");
+    const json_suffix = "";
+  
+    let parsedToday = new Date().setUTCHours(0, 0, 0, 0);
+    let paymentStandard = {};
+    let activePaymentStandard = undefined;
+    let upcomingPaymentStandard = undefined;
+    let upcomingPaymentStandardDate = undefined;
+    let zipCodesByTown = {};
+    let zipCodesByCommunity = {};
+    let townByCommunity = {};
+    let townsByZipCode = {};
+  
+    $results.append('<p class=ps-2>Loading...</p>');
+  
+    function loadData() {
+      $.getJSON(`payment_standard_data${json_suffix}.json`, function(data) {
+        paymentStandard = data;
+      });
+      $.getJSON(`zip_codes_by_town_data${json_suffix}.json`, function(data) {
+        zipCodesByTown = data;
+      });
+      $.getJSON(`zip_codes_by_community_data${json_suffix}.json`, function(data) {
+        zipCodesByCommunity = data;
+      });
+      $.getJSON(`town_by_community_data${json_suffix}.json`, function(data) {
+        townByCommunity = data;
+      });
+      $.getJSON(`towns_by_zip_code_data${json_suffix}.json`, function(data) {
+        townsByZipCode = data;
+      });
+    }
+  
+    function getPaymenStandarValue(paymentStandard, program, town, zipCode, size) {
+      let ps = paymentStandard[zipCode][town];
+      let value = new Intl.NumberFormat('en-US').format(ps[size]);
+      if (value === 'NaN') logNaNToSentry({ program: program, town: town, zipCode: zipCode, size: size, communities: communities, paymentStandard: currentPs });
+      return value;
+    }
+  
+    function addRow($table, program, town, zipCode, size) {
+        let currentPs = activePaymentStandard[zipCode][town];
+        communities = currentPs['communities'];
+        let currentValue = getPaymenStandarValue(activePaymentStandard, program, town, zipCode, size);
+        if(upcomingPaymentStandard) {
+          let upcomingValue = getPaymenStandarValue(upcomingPaymentStandard, program, town, zipCode, size);
+          $table.append(`<tr><td>${zipCode} (${communities})</td><td class="text-start">$${currentValue}</td><td class="text-start">$${upcomingValue}</td></tr>`);
+        } else {
+          $table.append(`<tr><td>${zipCode} (${communities})</td><td class="text-start">$${currentValue}</td></tr>`);
+        }
+    }
+  
+    function addHeader($table) {
+      if(upcomingPaymentStandard) {
+        $table.append(`<thead><tr><th>Zip Code</th><th>Current</th><th class="text-nowrap">${upcomingPaymentStandardDate}</th></tr></thead>`);
+      } else {
+        $table.append(`<thead><tr><th>Zip Code</th><th>Current</th></tr></thead>`);
+      }
+    }
+  
+    function addTable(program, town, zipCodes, size) {
+      let $table = $('<table class="table table-sm table-hover">');
+      addHeader($table);
+      $table.append('<tbody>');
+      zipCodes.sort();
+      zipCodes.forEach((zipCode) => {
+        let row = undefined;
+        if(town) {
+          addRow($table, program, town, zipCode, size);
+        } else {
+          townsByZipCode[zipCode].forEach((town) => {
+            addRow($table, program, town, zipCode, size);
+          });
+        }
+      })
+      $table.append('</tbody>')
+      $results.append($table);
+    }
+  
+    function titleize(str) {
+      return str
+        .toLowerCase()
+        .split(/\s+/) // split on spaces (and multiple spaces)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+  
+    function addRates(program, location, town, zipCodes, size) {
+        location = titleize(location ?? zipCodes);
+        $results.append(`<h2>${programLabels[program]} Payment Standards for ${bedroomLabels[size]} in ${location}</h2>`);
+        addTable(program, town, zipCodes, size);
+    }
+  
+    function setActivePaymentStandard(program) {
+      let ps = paymentStandard[program];
+      let psDateRanges = [];
+      let currentPsDateIndex = undefined;
+  
+      // Get ps date ranges
+      Object.keys(ps).forEach((dateFrom)=>{
+        dateTo = Object.keys(ps[dateFrom])[0];
+        psDateRanges.push([dateFrom, dateTo]);
+      });
+  
+      // Ensure date range order
+      psDateRanges.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+  
+      // Get current date range index
+      psDateRanges.forEach(([dateFrom, dateTo], index) => {
+        if(Date.parse(dateFrom) <= parsedToday && parsedToday <= Date.parse(dateTo)) {
+          currentPsDateIndex = index;
+        }
+      });
+  
+      if (currentPsDateIndex !== undefined) {
+        // Set active payment standard
+        let [dateFromKey, dateToKey] = psDateRanges[currentPsDateIndex];
+        activePaymentStandard = ps[dateFromKey][dateToKey];
+  
+        // Set upcoming payment standard
+        let upcomingPsDateIndex = currentPsDateIndex + 1;
+        if (upcomingPsDateIndex < psDateRanges.length) {
+          [dateFromKey, dateToKey] = psDateRanges[upcomingPsDateIndex];
+          upcomingPaymentStandard = ps[dateFromKey][dateToKey];
+          upcomingPaymentStandardDate = dateFromKey;
+          $upcomingPsAlertDate.text(upcomingPaymentStandardDate);
+          $upcomingPsAlert.show();
+        }
+      } else {
+        activePaymentStandard = undefined;
+        sentryError(`undefined payment standard for program: '${program}'`);
+      }
+    }
+  
+    function togglePageReload() {
+      if( !localStorage.getItem('paymentStandardsReLoaded') ) {
+        // Data is missing, try a page reload for the first time
+        localStorage['paymentStandardsReLoaded'] = true;
+        $results.append('<p>Error loading data. Reloading the page.</p>');
+        window.location.reload();
+      }
+      else {
+        // Data is still missing after trying a page reload
+        // Log the sentryError
+        localStorage.removeItem('paymentStandardsReLoaded');
+        $results.append('<p>Error loading data.</p>');
+        sentryError('Error loading data.');
+      }
+    }
+  
+    function handleMissingData() {
+      if( window.localStorage ) {
+        togglePageReload();
+      }
+      else {
+        // Data is missing but user does not have localStorage enabled
+        // Ask the user to reload the page
+        // Log the sentryError
+        $results.append('<p>Error loading data. Please try re-loading the page.</p>');
+        sentryError('Error loading data. Trying manual re-load.');
+      }
+    }
+  
+    function handleSearch() {
+      let zipCodes = [];
+      let location = $searchLocation.val().trim().toUpperCase();
+      let size = $searchSize.val();
+      let program = $searchProgram.val();
+      let town = undefined;
+      let community = undefined;
+      // Clear previous results
+      $upcomingPsAlert.hide();
+      $results.empty();
+      // Validate input
+      if(!size || !location || !program) {
+        return;
+      }
+      // Set the payment standard that applies for the current date
+      setActivePaymentStandard(program);
+      // Get list of zip codes based on location input
+      zipCodeRegExp = new RegExp('^[0-9]{5}$');
+      if (zipCodeRegExp.test(location)) {
+        zipCodes = [location];
+      } else if(zipCodesByTown[location])  {
+        zipCodes = zipCodesByTown[location];
+        town = location;
+      } else if (zipCodesByCommunity[location]) {
+        zipCodes = zipCodesByCommunity[location];
+        community = location;
+        town = townByCommunity[community];
+      } else {
+        zipCodes = [];
+      }
+      // zip code validation.
+      zipCodes = zipCodes
+        .map((zipCode) => {
+          if(activePaymentStandard[zipCode] != undefined) {
+            return zipCode;
+          }
+        })
+        .filter((zipCode) => zipCode);
+      //  Render results
+      if(zipCodes.length) {
+        addRates(program, location, town, zipCodes, size);
+      } else {
+        $results.append('<h2>No results found.</h2>');
+      }
+    }
+    loadData();
+    $(document).on("ajaxStop", function() {
+      $results.empty();
+  
+      let missingData = [
+        paymentStandard,
+        zipCodesByTown,
+        zipCodesByCommunity,
+        townByCommunity,
+        townsByZipCode,
+      ].some((obj) => Object.keys(Object(obj)).length == 0);
+  
+      if(missingData) {
+        handleMissingData();
+      } else {
+        $submit.prop('disabled', false);
+      }
+    });
+  
+    $form.validate({
+      rules: {
+        "search[program]": "required",
+        "search[location]": "required",
+        "search[size]": "required",
+      },
+      submitHandler: function(form) {
+        try {
+          handleSearch();
+        } catch (error) {
+          $results.empty();
+          $results.append('<p>Unexpected error.</p>');
+          sentryError('Unexpected error', error);
+          console.error(error);
+        }
+      }
+    });
+  
+    function eventKeyIs(e, keyText, keyInt) {
+      return [
+        () => eventKeyIs(e.originalEvent, keyText, keyInt),
+        () => e.key.toLocaleLowerCase() === keyText,
+        () => e.keyCode === keyInt,
+        () => e.which === keyInt,
+        () => e.code.toLocaleLowerCase() === keyText,
+      ].some(checkFn => {
+        try {
+          if (checkFn()) return true;
+        } catch(_) {};
+      })
+    }
+  
+    [$searchProgram, $searchSize].forEach(($element) => {
+      $(document).on("keydown", $searchProgram, function (e) {
+        if(eventKeyIs(e, 'enter', 13)) {
+          $form.trigger('submit');
+        }
+      });
+    });
+  });
+</script>
 
 </main>
+</div>
+</div>
 <script src='https://www.mass.gov/themes/custom/mass_theme/overrides/js/iframe_resizer_iframe.js'></script>
 
 </body>
